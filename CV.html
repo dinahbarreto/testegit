@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"> <!-- codificação de caracteres - traz o máximo de caracteres-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Controle de visualização para mobel-->
+    <title>Meu Currículo</title>
+    <style>
+    body { /*ificação de caracteres - traz o máximo de caracteres*/
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container { /* definições para a classe container */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /*Sobra do box*/
+        }
+        .header {
+        display: flex; /*Fotografia se ajustar dentro do container */
+        align-items: center; /* Alinha itens verticalmente ao centro */
+        margin-bottom: 20px;
+    }
+
+    .header img { /* Estiliza as imagens dentro do header */
+        max-width: 130px;
+        border-radius: 50%;
+        margin-right: 20px; /* Adiciona margem à direita da imagem */
+    }
+
+    .header h1 {
+        margin: 0; /* Remove a margem superior e inferior do título */
+    }
+
+    .about, .contact, .experience, .education, .courses, .links {
+            margin-bottom: 20px; /*margem abaixo do elemento*/
+    }
+        
+    .about {
+    text-align: justify; /*para justificar o sobre */
+    margin-bottom: 20px;
+    }
+    #sobre { /*Criado id para usar com JS para configurar o menu*/
+    color: #010136;
+    text-align:left ; /*Alinha a esquerda*/
+
+    }
+    #contato {
+    color: #010136;
+    text-align: left; 
+ 
+     }
+    #experiencias {
+    color: #010136;
+    text-align: left; 
+
+    }
+    #formacao {
+    color: #010136;
+    text-align: left; 
+    }
+    #cursos {
+    color: #010136;
+    text-align: left; 
+    }
+    #links {
+    color: #010136;
+    text-align: left; 
+    }
+        .contact ul { /*estilizar ul dentro da classe contact */
+            list-style: none; /*remove os marcodores */
+            padding: 0; /*remove preenchdimento da ul */
+        }
+        .contact li {
+            margin-bottom: 10px;
+        }
+        .contact li img {
+            width: 20px; /*Margem inferior */
+            vertical-align: middle; /*Alinha verticalmente as imagens ao centro da linha de texto em que estão*/
+            margin-right: 10px;
+        }
+        .experience table {
+            width: 100%; /* Define a largura da tabela como 100% do seu contêiner pai, é a tabela o pai*/
+            border-collapse: collapse;
+        }
+        .experience th:first-child, /* seletor que estiliza todas as células do cabeçalho filha*/
+        .experience td:first-child { /* seletor que estiliza todas os dados do cabeçalho filha*/
+            width: 20%;
+            text-align: center;
+        }
+        .experience th:first-child img,
+        .experience td:first-child img {
+            display: block; /*imagem se comportará como bloco */
+            margin: 0 auto;
+        }
+        .experience th, .experience td {
+            padding: 8px; /*espaço entre o conteúdo e a boras*/
+            border: 1px solid #ddd; /* borda cinza */
+            text-align: left; /*alinha o texto a esquerda */
+        }
+        .experience th {
+            background-color: #f2f2f2; /* cor de fundo do cabeçalho */
+        }
+        h2 {
+            margin-top: 20px; /* espaço em branco acima dos h2*/
+        }
+        .nav-buttons {
+            position: fixed; /* Torna a div fixa no topo da página */
+            top: 0; /* Alinha a div no topo */
+            left: 0; /* Alinha a div à esquerda */
+            width: 100%; /* Define a largura para ocupar toda a largura da janela */
+            background-color: #f4f4f4; /* Cor de fundo da barra fixa */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra sutil */
+            z-index: 1000; /* Define uma sobreposição elevada para garantir que fique acima do conteúdo */
+            text-align: center; /* Centraliza o texto dentro da barra fixa */
+            padding: 10px 0; /* Espaçamento interno superior e inferior para o texto */
+        }
+
+       
+        .nav-buttons a {  /* Estilos para os links no menu */
+            margin: 0 20px; /* Espaçamento entre os itens do menu */
+            text-decoration: none; /* Remover sublinhado padrão dos links */
+            color: #333; /* Cor do texto do link */
+            font-weight: bold; /* Pode ser ajustado conforme o estilo desejado */
+        }
+
+        
+        .nav-buttons a:hover { /* Estilos para os links no menu ao passar o mouse */
+            color: #007bff; /* Cor do texto do link ao passar o mouse */
+        }
+
+        
+        main { /* Estilos para o conteúdo principal (para compensar o espaço ocupado pela barra fixa) */
+            margin-top: 50px; /* Deve ser igual ao valor de margin-top da classe .container */
+        
+        }
+        .hr-custom { /*Estilizando a linha hr */
+    background-color: #010136;
+    height: 1px; /* Defina a altura da linha horizontal conforme necessário */
+    border: none; /* Remova a borda padrão */
+}      
+}
+
+.logo-container {
+    display: flex; /* Use flexbox para alinhar as logomarcas lado a lado */
+    gap: 40px; /* Espaço entre as logomarcas */
+    justify-content: center; /* Centralize as logomarcas horizontalmente */
+    align-items: center; /* Centralize as logomarcas verticalmente */
+}
+
+.logo-container a {
+    text-decoration: none; /* Remova sublinhado dos links */
+}
+
+.logo-container img {
+    max-width: 100%; /* Assegure que as imagens não excedam a largura do container */
+}  
+        </style>
+</head>
+<body>
+    <div class="nav-buttons"> <!--puxa toda customização criada a cima da clase nac-butons-->
+        <a href="#sobre">Sobre</a>
+        <a href="#experiencias">Experiências</a>
+        <a href="#formacao">Formação</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#links">Links</a>
+    </div>
+    <div class="container"> <!--primeiro container* -->
+    <div class="container"> <!-- segundo container-->
+        <br>
+        <div class="header">
+            <img src="https://media.licdn.com/dms/image/D4D03AQHmnFTGT-90bA/profile-displayphoto-shrink_800_800/0/1676045993095?e=1699488000&v=beta&t=3Wmq8u0B21CePy2pCMdaOOEk9McvqIW7gGwYbNqE5ps" alt="Foto Dinah">
+            <div>
+                <h1>Dinah Gonçalves Barreto</h1>
+                <div class="contact">
+                    <ul>
+                        <li>
+                            <a href="https://wa.me/5581999477226" target="_blank">
+                                <img src="https://logodownload.org/wp-content/uploads/2015/04/Whatsapp-logo-vetor.png" alt="WhatsApp Logo" style="width: 7%;">
+                                (81) 9994-77226
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:dinahbarreto@gmail.com" target="_blank">
+                                <img src="https://logosmarcas.net/wp-content/uploads/2020/11/Gmail-Logo.png" alt="Email Logo" style="width: 7%;">
+                                dinahbarreto@gmail.com
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="about">
+            <h2 id="sobre"><i class="fas fa-info-circle"></i> Sobre</h2> <!--Id usado por conta do JS (menu) e o fas é a biblioteca-->
+            <hr class="hr-custom">
+            <p>Sou formada em Pedagogia e possuo duas pós-graduações na área de Educação, além de atualmente cursar Análise e Desenvolvimento de Sistemas, com previsão de conclusão para o início de 2025.
+                Minha trajetória profissional na área de tecnologia inclui experiência em projetos desafiadores e relevantes na empresa Accenture, como o realizado na White Martins, onde atuei na correção de erros de usuários, envolvendo análise de problemas, e soluções por meio de SQL, replicando as correções no JDE (ERP utilizado na época). Durante esse projeto, também tive a oportunidade de liderar a implantação do sistema JDE em filiais, onde foi exigido muita atenção, concentração e habilidades de resolução de problemas que resultaram em elogios e promoção.
+                Em seguida, ingressei no projeto da Fibrasil, onde atuei na sustentação do ambiente, atendendo chamados por meio do SIGO e realizando alterações e manutenções no próprio SIGO conforme solicitações do cliente. Essa experiência fortaleceu minhas habilidades de atendimento ao cliente, gerenciamento de incidentes e resolução de problemas.
+                Minha paixão por aprender e meu interesse em novas áreas me levam a buscar novos desafios, e sinto um forte interesse em atuar com SAP, testes e gestão, áreas nas quais desejo me aprimorar e aplicar meus conhecimentos para contribuir efetivamente com o sucesso de projetos futuros.
+                Além disso, estou em processo de aprendizado com diversos cursos, recentemente terminei HTML, CSS e Java Script e estou entusiasmada com a oportunidade de adquirir novas habilidades nessa área.
+                Gosto muito da dinâmica de atuar em sustentação e tenho interesse em atuar como N2, onde poderei aplicar minha experiência e habilidades na resolução eficiente de problemas e na garantia de um suporte de alta qualidade aos usuários, porém aberta a qualquer oportunidade!</p>
+            </div>
+            <hr class="hr-custom">
+        <div class="experience">
+            <h2 id="experiencias"><i class="fas fa-briefcase"></i> Experiências</h2>
+            <hr class="hr-custom">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Empresa</th>
+                        <th>Período</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="https://www.accenture.com/br-pt" target="_blank">
+                            <img src="data:image/png;base64,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" alt="Logo accenture" style="width: 80%;">
+                        </a></td>
+                        <td>05/2018</td>
+                        <td>Custom Software Engineering Analyst
+                            <ul>
+                                <li>Banco de Dados</li>
+                                <li>SQL Server</li>
+                                <li>Azure</li>
+                                <li>Linux Server</li>
+                                <li>Git Hub</li>
+                                <li>Jde Development Worbench</li>
+                                <li>Suporte técnico ao cliente</li>
+                                <li>Configuration & Release Management</li>
+                                <li>Apache Kafka</li>
+                                <li>Garantia de Serviço</li>
+                                <li>Sigo</li>
+                                <li>HPSM</li>
+                                <li>AWS CloudFormation</li>
+                                <li>AlarmMenanger</li>
+                                <li>Agile</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="https://www.facebook.com/geracao.mais1/" target="_blank">
+                            <img src="https://scontent.frec47-1.fna.fbcdn.net/v/t1.18169-9/15055739_1505463436136307_6675227559188193572_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHqYURfHHd4PmEo7gEHM4sk53wPa3c0zDrnfA9rdzTMOsiVtzV4Uw7u1ryKCIEsESg&_nc_ohc=g1QPuxMIfikAX8VO8qx&_nc_ht=scontent.frec47-1.fna&oh=00_AfD_pB3DEIyTSeVq_w3aM9xgg4tChJ_76hnFJKMAHrjlOg&oe=65212C9D" alt="Logo accenture" style="width: 50%;">
+                        </a></td>
+                        <td>06/2013 - 05/2018 </td>
+                        <td>Sócia fundadora
+                            <ul>
+                                <li>Atendimento Psicopedagogico Clínico e Institucional</li>
+                                <li>Acompanhamento pedagógico</li>
+                                <li>Reforço escolar</li>
+                            </ul>
+                        </td>
+                    </tr>
+                        <td>
+                            <a href="https://www.escolaconviverpe.com.br/" target="_blank">
+                            <img src ="https://www.escolaconviverpe.com.br/img/conviver.png" alt="logo colégio conviver" width="50%">
+                            </a></td>
+                            <td>01/2015 - 12/2017</td>
+                            <td>Atendimento a crianças com deficiência                             
+                               <ul>
+                                    <li>Acompanhamento Pedagógico com enfase nas dificuldades de aprendizagem</li>
+                                </ul>
+                            </td>
+                    <tr>
+                        <td>
+                            <a href="https://universo.edu.br/" target="_blank">
+                            <img src="https://seeklogo.com/images/U/Universo-logo-B7CB50C5A5-seeklogo.com.png" alt="logo universidade universo" width="50%">
+                            </a>
+                            <td>08/2017-09/2017</td>
+                            <td>Professora convidada para Pós Graduação Psicopedagogia Clínida e Institucional
+                                <ul>
+                                    <li>Planejar e ministrar aulas da Disciplina Educação Especial na Perspectiva da Inclusão.</li>
+                                </ul>
+                            </td>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <!-- Rodapé da tabela, se necessário -->
+                </tfoot>
+            </table>
+            <hr class="hr-custom">
+        </div>    
+        <div class="education">
+            <h2 id="formacao"><i class="fas fa-graduation-cap"></i> Formação</h2>
+            <hr class="hr-custom">
+            <p><strong>UNINASSAU</strong> - Análise e desenvolvimento de Sistema / Cursando 2º Período</p>
+            <p><strong>UNIVERSO</strong> - Pedagogia </p>
+            <p><strong>UNIVERSO</strong> - Pós Gradução em Psicopedagogia Clínica e Institucional </p>
+            <p><strong>UNIVERSO</strong> - Pós Graduação em Educção Especial na Perspectiva da Inclusão </p>
+            <hr class="hr-custom">
+        </div>
+        
+        <div class="courses">
+            <h2 id="cursos"><i class="fas fa-book"></i> Cursos</h2>
+            <hr class="hr-custom">
+            <p><strong>Web Design: Construa Sites com PHP, HTML, CSS E JS</strong> Udemy - cursando</p>
+            <p><strong>Curso completo JAVA para Iniciantes</strong> Udemy - cursando</p>
+            <p><strong>Desenvolvimento Web com PHP e Banco de Dados MySQL</strong> Udemy - cursando</p>
+            <p><strong>Gestão de Projetos</strong> Accenture - 2023</p>
+            <p><strong>Completo - 123 horas, formação DBA</strong> Udemy - 2023</p>
+            <p><strong>Curso completo de banco de dados</strong> Udem y - 2023</p>
+            <p><strong>Minicurso Aprendendo SQL em Oracle</strong> Udemy - 2023</p>
+            <p><strong>Privacidade de dados - Como seus dados estão sendo expostos?</strong> Accenture - 2023</p>
+            <p><strong>Treinamento Product Backlog Building</strong> Accenture - 2022</p>
+            <p><strong>Escola de Entrega Ágil</strong> Accenture - 2018</p>
+            <p><strong>Profissional Capacitado em Scrum</strong> Accenture - 2018</p>
+            <p><strong>Desenvolvimento Ágil de Software:Introdução ao Desenvolvimento Ágil de Software</strong> Accenture - 2018</p>
+            <p><strong>Profissional Capacitado em Scrum</strong> Accenture - 2018</p>
+            <p><strong>Ágil empresarial</strong> Accenture - 2018</p>
+            <hr class="hr-custom">
+        </div>
+        <div class="links">
+            <h2 id="links"><i class="fas fa-link"></i> Links</h2>
+            <hr class="hr-custom">
+            <div class="logo-container">
+                <a href="https://www.linkedin.com/in/dinah-barreto-5b410524/" target="_blank">
+                    <img src="https://img.freepik.com/vetores-premium/logotipo-quadrado-do-linkedin-isolado-no-fundo-branco_469489-892.jpg" alt="Logo Linkedin" width="8%">
+                </a>
+                <a href="https://github.com/dinahbarreto" target="_blank">
+                    <img src="https://marcas-logos.net/wp-content/uploads/2020/03/GITHUB-LOGO.png" alt="GitHub Logo" width="14%">
+                </a>
+                <a href="mailto:dinahbarreto@gmail.com" target="_blank">
+                    <img src="https://logosmarcas.net/wp-content/uploads/2020/11/Gmail-Logo.png" alt="Email Logo" width="14%">
+                </a>
+                <a href="https://wa.me/5581999477226" target="_blank">
+                    <img src="https://logodownload.org/wp-content/uploads/2015/04/Whatsapp-logo-vetor.png" alt="WhatsApp Logo" width="12%">
+                </a>
+                <a href="https://www.instagram.com/bit.codes_/" target="_blank">
+                    <img src="https://img.freepik.com/vetores-premium/logotipo-de-midia-social-gradiente-roxo_197792-1883.jpg" alt="Instagram Logo" width="9%">
+                </a>
+                
+            </div>
+        </div>
+        <script>
+            // JavaScript para rolagem suave ao clicar nos botões de navegação
+            document.querySelectorAll('.nav-buttons a').forEach(anchor => { /*para todos elementos do nav-buttons a*/
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault(); /*vai direto para a página*/
+        
+                    const targetId = this.getAttribute('href').substring(1); /*com substring tira # dos id*/
+                    const targetElement = document.getElementById(targetId);
+        
+                    if (targetElement) { /*se o elembto existir, ele fará ação */
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        </script>        
+</body>
+</html>

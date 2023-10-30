@@ -1,0 +1,23 @@
+html {
+    font-size: 1 rem;
+}
+body {
+    background-color: black;
+
+}
+.img{
+    display: flex;
+    align-items: center;
+    width= "20";
+    margin-left: 7rem;
+    margin-top:-2rem
+
+}
+
+.h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    margin: 1rem;
+    color:blue; 
+    justify-content: center;
+}
